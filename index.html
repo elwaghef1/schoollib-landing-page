@@ -3,387 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SchoolLib - Gestion Scolaire Simplifiée</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Profile Entreprise WhatsApp</title>
     <style>
-        /* Reset et styles de base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(to bottom, #f9fafb, #ffffff);
-            min-height: 100vh;
+            background-color: #f0f2f5;
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid #f3f4f6;
-            z-index: 50;
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
         }
 
-        .nav-container {
-            max-width: 80rem;
-            margin: 0 auto;
-            padding: 0 1rem;
-            height: 4rem;
+        .profile-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .company-name {
+            font-size: 2rem;
+            color: #25D366;
+            margin-bottom: 1rem;
+        }
+
+        .business-info {
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1f2937;
+        .info-item i {
+            margin-right: 1rem;
+            color: #25D366;
         }
 
-        .logo i {
-            color: #3b82f6;
-            margin-right: 0.5rem;
+        .verification-badge {
+            background: #25D366;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 1rem;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
+        .contact-section {
+            margin-top: 2rem;
+            text-align: center;
         }
 
-        .nav-links a {
-            color: #4b5563;
+        .whatsapp-button {
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
             text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #3b82f6;
-        }
-
-        .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 500;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #2563eb;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 8rem 1rem 5rem;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 80rem;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: #1f2937;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 span {
-            color: #3b82f6;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: #4b5563;
-            max-width: 48rem;
-            margin: 0 auto 3rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 4rem;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            border: 1px solid #e5e7eb;
-            color: #4b5563;
-        }
-
-        .btn-secondary:hover {
-            background-color: #f9fafb;
-        }
-
-        .hero-image {
-            width: 100%;
-            max-width: 1200px;
-            border-radius: 0.75rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            margin: 0 auto;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 5rem 1rem;
-            background-color: white;
-        }
-
-        .features-grid {
-            max-width: 80rem;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        .feature-card {
-            padding: 1.5rem;
-            border: 1px solid #f3f4f6;
-            border-radius: 0.75rem;
-            transition: all 0.2s;
-        }
-
-        .feature-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 3rem;
-            height: 3rem;
-            background-color: #eff6ff;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .feature-icon i {
-            color: #3b82f6;
-            font-size: 1.5rem;
-        }
-
-        /* Stats Section */
-        .stats {
-            background-color: #3b82f6;
-            padding: 5rem 1rem;
-            color: white;
-        }
-
-        .stats-grid {
-            max-width: 80rem;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
+            display: inline-block;
+            margin-top: 1rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
         }
 
-        /* Footer */
-        footer {
-            background-color: white;
-            padding: 3rem 1rem;
-            border-top: 1px solid #f3f4f6;
-        }
-
-        .footer-grid {
-            max-width: 80rem;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-links h4 {
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            color: #4b5563;
-            margin-bottom: 0.5rem;
-        }
-
-        .copyright {
-            max-width: 80rem;
-            margin: 3rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid #f3f4f6;
+        .privacy-notice {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
             text-align: center;
-            color: #6b7280;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-star"></i>
-                <span>SchoolLib</span>
+    <div class="container">
+        <div class="profile-card">
+            <div class="header">
+                <h1 class="company-name">Mohamed Lemine EL WAGHEF</h1>
+                <span class="verification-badge">Profil Professionnel Vérifié</span>
             </div>
-            <div class="nav-links">
-                <a href="#features">Fonctionnalités</a>
-                <a href="#testimonials">Témoignages</a>
-                <button class="btn btn-primary">Démarrer</button>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Gérez votre école avec <span>simplicité</span></h1>
-            <p>Une solution moderne et intuitive pour transformer la gestion de votre établissement scolaire. 
-               Concentrez-vous sur l'essentiel : l'éducation.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Essayer gratuitement</button>
-                <button class="btn btn-secondary">Voir la démo</button>
+            <div class="business-info">
+                <div class="info-item">
+                    <i>📍</i>
+                    <p>Adresse professionnelle vérifiée</p>
+                </div>
+                <div class="info-item">
+                    <i>🏢</i>
+                    <p>Service client professionnel</p>
+                </div>
+                <div class="info-item">
+                    <i>✓</i>
+                    <p>Compte professionnel vérifié</p>
+                </div>
             </div>
-            <img src="/api/placeholder/1200/600" alt="SchoolLib Dashboard" class="hero-image">
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="hero-content">
-            <h2>Tout ce dont vous avez besoin pour une gestion efficace</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Gestion des Élèves</h3>
-                    <p>Simplifiez le suivi des dossiers étudiants, des notes et de l'assiduité en quelques clics.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Ressources Pédagogiques</h3>
-                    <p>Centralisez et organisez tous vos supports de cours et documents pédagogiques.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Planning Intelligent</h3>
-                    <p>Générez automatiquement les emplois du temps en tenant compte de toutes les contraintes.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Analyses & Rapports</h3>
-                    <p>Visualisez la progression et générez des rapports détaillés en temps réel.</p>
-                </div>
+            <div class="contact-section">
+                <h2>Contactez-nous sur WhatsApp Business</h2>
+                <p>Nous sommes là pour vous aider</p>
+                <a href="#" class="whatsapp-button">Envoyer un message</a>
             </div>
-        </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div>
-                <div class="stat-number">1000+</div>
-                <div>Écoles nous font confiance</div>
-            </div>
-            <div>
-                <div class="stat-number">50K+</div>
-                <div>Élèves gérés quotidiennement</div>
-            </div>
-            <div>
-                <div class="stat-number">99%</div>
-                <div>Taux de satisfaction</div>
+            <div class="privacy-notice">
+                <p>Ce compte professionnel est vérifié et sécurisé selon les normes WhatsApp Business.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-links">
-                <div class="logo">
-                    <i class="fas fa-star"></i>
-                    <span>SchoolLib</span>
-                </div>
-                <p>Simplifiez la gestion de votre établissement scolaire</p>
-            </div>
-            <div class="footer-links">
-                <h4>Produit</h4>
-                <ul>
-                    <li>Fonctionnalités</li>
-                    <li>Tarifs</li>
-                    <li>FAQ</li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Entreprise</h4>
-                <ul>
-                    <li>À propos</li>
-                    <li>Blog</li>
-                    <li>Carrières</li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Légal</h4>
-                <ul>
-                    <li>Confidentialité</li>
-                    <li>CGU</li>
-                    <li>RGPD</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 SchoolLib. Tous droits réservés.</p>
-        </div>
-    </footer>
+    </div>
 </body>
 </html>
